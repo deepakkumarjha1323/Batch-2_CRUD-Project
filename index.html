@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS CRUD Project</title>
+    </head>
+    <body>
+        <form action="">
+            <input name="name" type="text" placeholder="Enter your good name">
+            <input name="surname" type="text" placeholder="Enter your surname">
+            <input name="address" type="text" placeholder="Enter your address">
+            <input type="button" value="Save" onclick="saveData()">
+        </form>
+        <hr>
+        <table border="1" id="mytb">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Deepak</td>
+                    <td>Jha</td>
+                    <td>Kashipur</td>
+                    <td>
+                        <button>View</button>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Js Code Start -->
+        <script>
+            var n = document.querySelector('input[name="name"]');
+            var sn = document.querySelector('input[name="surname"]');
+            var addr = document.querySelector('input[name="address"]');
+            var tbody = document.querySelector('#mytb tbody');
+            // Fat Arrow Function
+            let saveData=()=>{
+                alert('Hello jii');
+                console.log(n.value);
+                console.log(sn.value);
+                console.log(addr.value);
+                console.log(tbody);
+                tbody.innerHTML += `<tr>
+                                        <td>${n.value}</td>
+                                        <td>${sn.value}</td>
+                                        <td>${addr.value}</td>
+                                        <td>
+                                            <button>View</button>
+                                            <button>Edit</button>
+                                            <button onclick="deleteElement(this)">Delete</button>
+                                        </td>
+                                    </tr>`
+
+                n.value = sn.value = addr.value = '';
+
+            }
+            // Delete function
+            let deleteElement = (del) =>{
+                del.closest('tr').remove();
+            }
+        </script>
+    </body>
+</html>
